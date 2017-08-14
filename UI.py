@@ -44,7 +44,7 @@ class OnePage(QDialog):
         self.contenttable.setColumnWidth(0,100)
         self.contenttable.setColumnWidth(1,480)
         self.contenttable.setColumnWidth(2,479)
-        self.nextpagebutton=QPushButton("获取全部")
+        self.nextpagebutton=QPushButton("下一页")
 
 
 
@@ -83,24 +83,25 @@ class OnePage(QDialog):
 
 #     #根据self.urlist 显示下一页
     def nextpage(self):
-        # if self.LIST:
-        #     self.dealLIST()  # 显示下页的内容（因为重复调用了next（list））
-        #     # self.lablestate.setText('当前页已更新！')
-        # else:
-        #     self.lablestate.setText('没有下一页了！')
         if self.LIST:
-            lis = list(self.LIST)
-            for i in range(0, len(lis)):
-                l = lis[i]
-                self.titlelist.extend(l[0])
-                self.urllist.extend(l[1])
-                rowcount = self.contenttable.rowCount()  # 清空之前搜索的数据
-                for i in range(0, rowcount):
-                    self.contenttable.removeRow(0)
-                self.a = 0
-                self.showTablecontent(self.titlelist, self.urllist)
+            self.dealLIST()  # 显示下页的内容（因为重复调用了next（list））
+            # self.lablestate.setText('当前页已更新！')
         else:
-            self.lablestate.setText('请输入店铺名！')
+            self.lablestate.setText('没有下一页了！')
+        #加载剩余全部页面
+        # if self.LIST:
+        #     lis = list(self.LIST)
+        #     for i in range(0, len(lis)):
+        #         l = lis[i]
+        #         self.titlelist.extend(l[0])
+        #         self.urllist.extend(l[1])
+        #         rowcount = self.contenttable.rowCount()  # 清空之前搜索的数据
+        #         for i in range(0, rowcount):
+        #             self.contenttable.removeRow(0)
+        #         self.a = 0
+        #         self.showTablecontent(self.titlelist, self.urllist)
+        # else:
+        #     self.lablestate.setText('请输入店铺名！')
     #这个函数是一个解析self.LIST的函数，它将解析后的数据传递给showtable函数展示数据给用户
     def dealLIST(self):
         lis = self.LIST
